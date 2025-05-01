@@ -1,0 +1,222 @@
+{
+  "time": 1746133631310,
+  "blocks": [
+    {
+      "id": "Fhl3JqFASr",
+      "type": "header",
+      "data": {
+        "text": "Integrations",
+        "level": 1
+      }
+    },
+    {
+      "id": "ys7DMkbhxk",
+      "type": "paragraph",
+      "data": {
+        "text": "Do more with less."
+      }
+    },
+    {
+      "id": "WImeHORF3V",
+      "type": "paragraph",
+      "data": {
+        "text": ""
+      }
+    },
+    {
+      "id": "4fXU_sj9f3",
+      "type": "heading2",
+      "data": {
+        "text": "OAuth 2.0 Protocol",
+        "level": 2
+      }
+    },
+    {
+      "id": "UYn91XShwl",
+      "type": "list",
+      "data": {
+        "style": "ordered",
+        "meta": {
+          "counterType": "numeric"
+        },
+        "items": [
+          {
+            "content": "Push to login",
+            "meta": {},
+            "items": []
+          },
+          {
+            "content": "Callback",
+            "meta": {},
+            "items": []
+          },
+          {
+            "content": "Authorize - obtain access_token",
+            "meta": {},
+            "items": []
+          },
+          {
+            "content": "Construct a new group and attach to the requesting.",
+            "meta": {},
+            "items": []
+          },
+          {
+            "content": "Send the requesting back to original page with update notice",
+            "meta": {},
+            "items": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "e6-mOuttOJ",
+      "type": "paragraph",
+      "data": {
+        "text": ""
+      }
+    },
+    {
+      "id": "ftPPyOue-r",
+      "type": "heading3",
+      "data": {
+        "text": "Expiration",
+        "level": 3
+      }
+    },
+    {
+      "id": "7NTrzH0X8U",
+      "type": "list",
+      "data": {
+        "style": "unordered",
+        "meta": {},
+        "items": [
+          {
+            "content": "Authorization returns an <b>access_token</b> and<b> refresh_token</b>, and hopefully notice of when each expire.",
+            "meta": {},
+            "items": []
+          },
+          {
+            "content": "When the access_token expires, the refresh token is used to get a new one. When the refresh token expires, a new access token cannot be requested.",
+            "meta": {},
+            "items": []
+          },
+          {
+            "content": "Refresh tokens CANNOT expire. ",
+            "meta": {},
+            "items": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "LoUNFbLHuC",
+      "type": "paragraph",
+      "data": {
+        "text": ""
+      }
+    },
+    {
+      "id": "SNfWFgBRTW",
+      "type": "heading3",
+      "data": {
+        "text": "Push to Login",
+        "level": 3
+      }
+    },
+    {
+      "id": "ACH0i4TYu-",
+      "type": "paragraph",
+      "data": {
+        "text": "Front-end to the external service. The user will be asked to complete a workflow."
+      }
+    },
+    {
+      "id": "75hnBfRlsP",
+      "type": "code",
+      "data": {
+        "code": "const router = useRouter();\n\nrouter.push('/dest_of_login');"
+      }
+    },
+    {
+      "id": "RpzOQXwHrp",
+      "type": "paragraph",
+      "data": {
+        "text": ""
+      }
+    },
+    {
+      "id": "0ZUFlvSIlF",
+      "type": "heading3",
+      "data": {
+        "text": "Authorize",
+        "level": 3
+      }
+    },
+    {
+      "id": "wHHnhkpfbc",
+      "type": "paragraph",
+      "data": {
+        "text": ""
+      }
+    },
+    {
+      "id": "nOUClNpyeV",
+      "type": "code",
+      "data": {
+        "code": " try {\n            const res = await GOOGLE_API.post(\"/oauth2/v3/token\", {\n                grant_type: 'authorization_code',\n                code: authorization_code,\n                redirect_uri: `http://localhost:3000/api/v1/auth/callback`\n            });\n\n            console.log(res.data);\n\n            return {\n                ...res.data,\n                access_token_expires: dayjs().add(res.data.expires_in, 's').toDate(),\n                refresh_token_expires: dayjs().add(res.data.refresh_token_expires_in, 's').toDate(),\n            };\n        }\n        catch (err: any) {\n            console.log({\n                message: \"Could not authorize connection\",\n                err,\n                res: err.response\n            });\n            return null;\n        }"
+      }
+    },
+    {
+      "id": "rtenr7IDdZ",
+      "type": "paragraph",
+      "data": {
+        "text": ""
+      }
+    },
+    {
+      "id": "JdhS_f1b_Q",
+      "type": "heading3",
+      "data": {
+        "text": "Callback",
+        "level": 3
+      }
+    },
+    {
+      "id": "BYcnyqv12a",
+      "type": "code",
+      "data": {
+        "code": ""
+      }
+    },
+    {
+      "id": "QB3BsT7ai9",
+      "type": "paragraph",
+      "data": {
+        "text": ""
+      }
+    },
+    {
+      "id": "zmxEQvD8gn",
+      "type": "heading2",
+      "data": {
+        "text": "API Key",
+        "level": 2
+      }
+    },
+    {
+      "id": "zMbOvC5-c7",
+      "type": "paragraph",
+      "data": {
+        "text": ""
+      }
+    },
+    {
+      "id": "8_nOetIXCA",
+      "type": "paragraph",
+      "data": {
+        "text": ""
+      }
+    }
+  ],
+  "version": "2.31.0-rc.7"
+}

@@ -1,0 +1,71 @@
+{
+  "time": 1746135443495,
+  "blocks": [
+    {
+      "id": "DZql3ujN0V",
+      "type": "header",
+      "data": {
+        "text": "Getting Started",
+        "level": 1
+      }
+    },
+    {
+      "id": "Qhml9MgrNB",
+      "type": "paragraph",
+      "data": {
+        "text": ""
+      }
+    },
+    {
+      "id": "NqcMHNqGYo",
+      "type": "heading2",
+      "data": {
+        "text": "Install Stuff",
+        "level": 2
+      }
+    },
+    {
+      "id": "xAdOhIe8BN",
+      "type": "list",
+      "data": {
+        "style": "unordered",
+        "meta": {},
+        "items": [
+          {
+            "content": "A powerful code editor and visualizer. I recommend Visual Studio Code for either Windows or Mac <a href=\"https://code.visualstudio.com/\">https://code.visualstudio.com/</a>",
+            "meta": {},
+            "items": []
+          },
+          {
+            "content": "<a href=\"https://code.visualstudio.com/\"></a>A Browser you like. You should be able to use them all to test code in any environment.\nI recommend Firefox Developer Edition: <a href=\"https://www.mozilla.org/en-US/firefox/developer/\">https://www.mozilla.org/en-US/firefox/developer/</a>",
+            "meta": {},
+            "items": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "J3-Y5ttAZu",
+      "type": "list",
+      "data": {
+        "style": "unordered",
+        "meta": {},
+        "items": [
+          {
+            "content": "Docker",
+            "meta": {},
+            "items": []
+          }
+        ]
+      }
+    },
+    {
+      "id": "BNb_Ns-6dh",
+      "type": "paragraph",
+      "data": {
+        "text": ""
+      }
+    }
+  ],
+  "version": "2.31.0-rc.7"
+}

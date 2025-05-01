@@ -1,0 +1,28 @@
+{
+  "time": 1746125491561,
+  "blocks": [
+    {
+      "id": "kjaZwEUBlq",
+      "type": "header",
+      "data": {
+        "text": "This is my awesome editor!",
+        "level": 1
+      }
+    },
+    {
+      "id": "dHacrRZz-0",
+      "type": "paragraph",
+      "data": {
+        "text": "THis is the text."
+      }
+    },
+    {
+      "id": "vPl01aKp1U",
+      "type": "paragraph",
+      "data": {
+        "text": "Save this text"
+      }
+    }
+  ],
+  "version": "2.31.0-rc.7"
+}

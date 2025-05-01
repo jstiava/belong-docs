@@ -1,0 +1,228 @@
+import { ArrowForward, CopyrightOutlined, EmailOutlined, Facebook, FacebookOutlined, GitHub, HomeOutlined, Instagram, ScheduleOutlined, StoreOutlined } from "@mui/icons-material";
+import { Button, ButtonBase, Divider, IconButton, Link, TextField, Typography, useMediaQuery, useTheme } from "@mui/material";
+import TerandinaLogo from '@/public/Terandina_clear.png'
+import TerandinaNoText from '@/public/Terandina_no_text.png'
+import Image from "next/image";
+import { useRouter } from "next/router";
+import { menuItems } from "./Header";
+import { useState } from "react";
+
+
+export default function Footer() {
+
+    const theme = useTheme();
+    const router = useRouter();
+    const isSm = useMediaQuery(theme.breakpoints.down('sm'));
+    const isMd = useMediaQuery(theme.breakpoints.down('md'));
+
+    const [email, setEmail] = useState("");
+
+    const [isContactOpen, setIsContactOpen] = useState(false);
+
+    const leftWidth = "25rem";
+
+    return (
+        <>
+            <footer className={"column middle relaxed"} style={{
+                width: "100%",
+                minHeight: "25vh",
+                height: "fit-content",
+                backgroundColor: theme.palette.background.paper,
+                color: theme.palette.text.primary,
+                padding: isSm ? "2rem" : "3rem 5rem"
+            }}>
+                <div className={isSm ? "column" : "flex relaxed top"} style={{
+                    padding: "3rem 0"
+                }}>
+                    <div className="column fit" style={{
+                        width: isSm ? "100%" : leftWidth
+                    }}>
+                        <div className="column snug">
+                            <Typography variant="h6" sx={{
+                                textTransform: 'uppercase',
+                                fontSize: "1rem"
+                            }}>Subscribe to our Newsletter</Typography>
+                            <TextField
+                                variant="standard"
+                                placeholder="Email Address"
+                                value={email}
+                                onChange={e => setEmail(e.target.value)}
+                                slotProps={{
+                                    input: {
+                                        endAdornment: (
+                                            <IconButton
+                                                onClick={e => {
+                                                    fetch('/api/subscribe', {
+                                                        method: "POST",
+                                                        headers: {
+                                                            'Content-Type': "application/json"
+                                                        },
+                                                        body: JSON.stringify({
+                                                            email
+                                                        })
+                                                    })
+                                                    .then(res => {
+                                                        setEmail("We got it. Thank you!")
+                                                    })
+                                                }}
+                                            >
+                                                <ArrowForward sx={{
+                                                    fontSize: '1.25rem'
+                                                }} />
+                                            </IconButton>
+                                        )
+                                    }
+                                }}
+                            />
+                        </div>
+                        <div className="flex compact">
+                            <IconButton
+                                href="https://www.instagram.com/terandina.official/"
+                                onClick={e => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    window.open('https://www.instagram.com/terandina.official/', '_blank')
+                                }}
+                            >
+                                <Instagram fontSize="small" />
+                            </IconButton>
+
+                            <IconButton
+                                href="https://m.facebook.com/61575338195878/"
+                                onClick={e => {
+                                    e.preventDefault();
+                                    e.stopPropagation();
+                                    window.open('https://m.facebook.com/61575338195878/', '_blank')
+                                }}
+                            >
+                                <Facebook fontSize="small" />
+                            </IconButton>
+
+                        </div>
+                    </div>
+                    <div className={isSm ? "column relaxed top" : "flex relaxed top"} style={{
+                        width: isSm ? "100%" : "calc(100% - 30rem)"
+                    }}>
+                        <div className="column compact fit" style={{
+                            width: isSm ? "100%" : "clamp(10rem, 100%, 15rem)",
+                        }}>
+                            {/* <Typography variant="h6" sx={{
+                            textTransform: 'uppercase',
+                            fontSize: "1rem"
+                        }}>About Us</Typography> */}
+                            {ABOUT_US.map(item => (
+                                <ButtonBase
+                                    key={item.value}
+                                    className="flex between"
+                                    href={`/${item.value}`}
+                                    onClick={e => {
+                                        e.preventDefault();
+                                        if (item.value === 'contact') {
+                                            setIsContactOpen(true);
+                                            return;
+                                        }
+                                        router.push(`/${item.value}`);
+                                    }}
+                                >
+                                    <Typography>{item.name}</Typography>
+                                    <ArrowForward sx={{
+                                        fontSize: '1rem'
+                                    }} />
+                                </ButtonBase>
+                            ))}
+                        </div>
+                    </div>
+                    
+                </div>
+                <Divider />
+                <div className="flex between">
+                    <Typography>Terandina Inc. Copyright 2025.</Typography>
+                    <div className="flex compact fit">
+
+                        {/* <ButtonBase className="flex compact fit"
+                        sx={{
+                            padding: "0.25rem"
+                        }}
+                        href={'https://github.com/jstiava'}
+                        onClick={(e) => {
+                            e.preventDefault();
+                            window.open('https://github.com/jstiava', '_blank')
+                        }}
+                    >
+                        <GitHub fontSize="small"/>
+                        <Typography sx={{
+                            // fontSize: '0.75rem'
+                        }}>
+                            Website by Jeremy Stiava
+                        </Typography>
+                    </ButtonBase> */}
+                    </div>
+                </div>
+
+            </footer>
+        </>
+    )
+}
+
+
+const OUTERWEAR = [
+    {
+        name: "Ponchos",
+        value: 'ponchos'
+    },
+    {
+        name: "Cardigans",
+        value: 'cardigans'
+    },
+    {
+        name: "Hoodies",
+        value: 'hoodies'
+    }
+]
+
+
+const ACCESSORIES = [
+    {
+        name: "Blankets",
+        value: 'blankets'
+    },
+    {
+        name: "Jewelry",
+        value: 'jewelry'
+    },
+    {
+        name: "Accessories",
+        value: 'accessories'
+    }
+]
+
+export const ABOUT_US = [
+    {
+        name: "About",
+        value: 'our-values'
+    },
+    {
+        name: "Contact",
+        value: 'contact'
+    },
+    {
+        name: "Shipping & Returns Policy",
+        value: 'return-policy'
+    },
+    {
+        name: "FAQs",
+        value: 'faqs'
+    }
+]
+
+
+export const ABOUT_US_SIDEBAR = [
+    {
+        name: "About",
+        value: 'our-values'
+    },
+    {
+        name: "Contact",
+        value: 'contact'
+    },
+]
